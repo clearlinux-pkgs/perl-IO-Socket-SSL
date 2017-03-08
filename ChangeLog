@@ -1,3 +1,44 @@
+2.047 2017/02/16
+- better fix for problem which 2.046 tried to fix but broke LWP this way
+2.046 2017/02/15
+- cleanup everything in DESTROY and make sure to start with a fresh %{*self}
+  in configure_SSL because it can happen that a GLOB gets used again without
+  calling DESTROY (https://github.com/noxxi/p5-io-socket-ssl/issues/56)
+2.045 2017/02/13
+- fixed memory leak caused by not destroying CREATED_IN_THIS_THREAD for SSL
+  objects -> github pull#55
+- optimization: don't track SSL objects and CTX in *CREATED_IN_THIS_THREAD
+  if perl is compiled w/o thread support
+- small fix in t/protocol_version.t to use older versions of Net::SSLeay
+  with openssl build w/o SSLv3 support
+- when setting SSL_keepSocketOnError to true the socket will not be closed
+  on fatal error. This is a modified version of
+  https://github.com/noxxi/p5-io-socket-ssl/pull/53/
+2.044 2017/01/26
+- protect various 'eval'-based capability detections at startup with a localized
+  __DIE__ handler. This way dynamically requiring IO::Socket::SSL as done by
+  various third party software should cause less problems even if there is a
+  global __DIE__ handler which does not properly deal with 'eval'.
+2.043 2017/01/06
+- make t/session_ticket.t work with OpenSSL 1.1.0. With this version the
+  session does not get reused any longer if it was not properly closed which
+  is now done using an explicit close by the client which causes a
+  proper SSL_shutdown
+2.042 2017/01/05
+- enable session ticket callback with Net::SSLeay>=1.80
+2.041 2017/01/04
+- leave session ticket callback off for now until the needed patch is
+  included in Net::SSLeay. See
+  https://rt.cpan.org/Ticket/Display.html?id=116118#txn-1696146
+2.040 2016/12/17
+- fix detection of default CA path for OpenSSL 1.1.x
+- Utils::CERT_asHash now includes the signature algorithm used
+- Utils::CERT_asHash can now deal with large serial numbers
+2.039 2016/11/20
+- OpenSSL 1.1.0c changed the behavior of SSL_read so that it now returns -1 on
+  EOF without proper SSL shutdown. Since it looks like that this behavior will
+  be kept at least for 1.1.1+ adapt to the changed API by treating errno=NOERR
+  on SSL_ERROR_SYSCALL as EOF.
 2.038 2016/09/17
 - restrict session ticket callback to Net::SSLeay 1.79+ since version before
   contains bug. Add test for session reuse
@@ -12,7 +53,7 @@
 2.035 2016/08/11
 - fixes for issues introduced in 2.034
   - return with error in configure_SSL if context creation failed. This
-    might otherwise result in an segmentation fault later.
+    might otherwise result in a segmentation fault later.
   - apply builtin defaults before any (user configurable) global settings
     (i.e. done with set_defaults, set_default_context...) so that builtins
     don't replace user settings
@@ -65,7 +106,7 @@
   available). Since IO::Socket::IP sets AI_ADDRCONFIG by default connect to
   localhost would fail on this systems. This happened at least for the tests,
   see https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=813796
-  Workaround is to explicitely set GetAddrInfoFlags to 0 if no GetAddrInfoFlags
+  Workaround is to explicitly set GetAddrInfoFlags to 0 if no GetAddrInfoFlags
   is set but the Family/Domain is given. In this case AI_ADDRCONFIG would not
   be useful anyway but would cause at most harm.
 2.023 2016/01/30
@@ -80,7 +121,7 @@
   Thanks to Mark.Martinec[AT]ijs[DOT]si for reporting in #110253
 2.021 2015/12/02
 - Fixes for documentation and typos thanks to DavsX and jwilk.
-- Update PublicSuffx with latest version from publicsuffix.org
+- Update PublicSuffix with latest version from publicsuffix.org
 2.020 2015/09/20
 - support multiple directories in SSL_ca_path as proposed in RT#106711
   by dr1027[AT]evocat[DOT]ne. Directories can be given as array or as string
@@ -289,7 +330,7 @@
   because of bad setup of the socket. Otherwise we get an endless calling
   of the OCSP callback.
 - consider an OCSP response which is not yet or no longer valid a soft error
-  instead of an hard error
+  instead of a hard error
 - fix skip in t/external/ocsp.t in case fingerprint does not match
 - RT#95633 call EVP_PKEY_free not EVP_KEY_free in
   IO::Socket::SSL::Utils::KEY_free. Thanks to paul[AT]city-fan[DOT]org
@@ -886,7 +927,7 @@ v1.24 2009.04.01
 - renew test certificates again (root CA expired, now valid for 10 years)
 
 v1.23 2009.02.23
-- if neither SSL_ca_file nor SSL_ca_path are known (e.g not given and the
+- if neither SSL_ca_file nor SSL_ca_path are known (e.g. not given and the
   default values have no existing file|path) disable checking of
   certificates, but carp about the problem
 - new test certificates, the old ones expired and caused tests to fail
@@ -995,7 +1036,7 @@ v1.10
   IO::Socket is used
 
 v1.09
-- new method stop_SSL as opposite of start_SSL based on a idea
+- new method stop_SSL as opposite of start_SSL based on an idea
   of Bron Gondwana <brong[AT]fastmail[DOT]fm>
   To support this method the SSL_shutdown handling had to be
   fixed, e.g. in close a proper unidirectional shutdown
