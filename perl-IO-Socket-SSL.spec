@@ -4,7 +4,7 @@
 #
 Name     : perl-IO-Socket-SSL
 Version  : 2.047
-Release  : 37
+Release  : 38
 URL      : http://search.cpan.org/CPAN/authors/id/S/SU/SULLR/IO-Socket-SSL-2.047.tar.gz
 Source0  : http://search.cpan.org/CPAN/authors/id/S/SU/SULLR/IO-Socket-SSL-2.047.tar.gz
 Summary  : 'Nearly transparent SSL encapsulation for IO::Socket::INET.'
@@ -31,6 +31,9 @@ doc components for the perl-IO-Socket-SSL package.
 %setup -q -n IO-Socket-SSL-2.047
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
@@ -44,7 +47,7 @@ fi
 export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 make TEST_VERBOSE=1 test
 
 %install
