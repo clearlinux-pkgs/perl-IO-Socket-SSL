@@ -4,7 +4,7 @@
 #
 Name     : perl-IO-Socket-SSL
 Version  : 2.047
-Release  : 38
+Release  : 39
 URL      : http://search.cpan.org/CPAN/authors/id/S/SU/SULLR/IO-Socket-SSL-2.047.tar.gz
 Source0  : http://search.cpan.org/CPAN/authors/id/S/SU/SULLR/IO-Socket-SSL-2.047.tar.gz
 Summary  : 'Nearly transparent SSL encapsulation for IO::Socket::INET.'
