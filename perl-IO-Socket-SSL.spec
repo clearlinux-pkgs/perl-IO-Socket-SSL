@@ -4,7 +4,7 @@
 #
 Name     : perl-IO-Socket-SSL
 Version  : 2.051
-Release  : 44
+Release  : 45
 URL      : https://www.cpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.051.tar.gz
 Source0  : https://www.cpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.051.tar.gz
 Summary  : 'Nearly transparent SSL encapsulation for IO::Socket::INET.'
@@ -64,11 +64,11 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.0/IO/Socket/SSL.pm
-/usr/lib/perl5/site_perl/5.26.0/IO/Socket/SSL.pod
-/usr/lib/perl5/site_perl/5.26.0/IO/Socket/SSL/Intercept.pm
-/usr/lib/perl5/site_perl/5.26.0/IO/Socket/SSL/PublicSuffix.pm
-/usr/lib/perl5/site_perl/5.26.0/IO/Socket/SSL/Utils.pm
+/usr/lib/perl5/site_perl/5.26.1/IO/Socket/SSL.pm
+/usr/lib/perl5/site_perl/5.26.1/IO/Socket/SSL.pod
+/usr/lib/perl5/site_perl/5.26.1/IO/Socket/SSL/Intercept.pm
+/usr/lib/perl5/site_perl/5.26.1/IO/Socket/SSL/PublicSuffix.pm
+/usr/lib/perl5/site_perl/5.26.1/IO/Socket/SSL/Utils.pm
 
 %files doc
 %defattr(-,root,root,-)
