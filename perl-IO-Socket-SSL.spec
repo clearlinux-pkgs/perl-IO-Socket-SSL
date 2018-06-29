@@ -4,13 +4,13 @@
 #
 Name     : perl-IO-Socket-SSL
 Version  : 2.056
-Release  : 50
-URL      : https://www.cpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.056.tar.gz
-Source0  : https://www.cpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.056.tar.gz
+Release  : 51
+URL      : https://cpan.metacpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.056.tar.gz
+Source0  : https://cpan.metacpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.056.tar.gz
 Summary  : 'Nearly transparent SSL encapsulation for IO::Socket::INET.'
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
-Requires: perl-IO-Socket-SSL-doc
+Requires: perl-IO-Socket-SSL-man
 BuildRequires : perl(Mozilla::CA)
 BuildRequires : perl(Net::SSLeay)
 
@@ -19,12 +19,12 @@ IO::Socket::SSL is a class implementing an object oriented
 interface to SSL sockets. The class is a descendent of
 IO::Socket::INET.
 
-%package doc
-Summary: doc components for the perl-IO-Socket-SSL package.
-Group: Documentation
+%package man
+Summary: man components for the perl-IO-Socket-SSL package.
+Group: Default
 
-%description doc
-doc components for the perl-IO-Socket-SSL package.
+%description man
+man components for the perl-IO-Socket-SSL package.
 
 
 %prep
@@ -70,6 +70,9 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 /usr/lib/perl5/site_perl/5.26.1/IO/Socket/SSL/PublicSuffix.pm
 /usr/lib/perl5/site_perl/5.26.1/IO/Socket/SSL/Utils.pm
 
-%files doc
+%files man
 %defattr(-,root,root,-)
-%doc /usr/share/man/man3/*
+/usr/share/man/man3/IO::Socket::SSL.3
+/usr/share/man/man3/IO::Socket::SSL::Intercept.3
+/usr/share/man/man3/IO::Socket::SSL::PublicSuffix.3
+/usr/share/man/man3/IO::Socket::SSL::Utils.3
