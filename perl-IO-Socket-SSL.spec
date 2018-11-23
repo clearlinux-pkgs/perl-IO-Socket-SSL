@@ -65,11 +65,11 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.26.1/IO/Socket/SSL.pm
-/usr/lib/perl5/vendor_perl/5.26.1/IO/Socket/SSL.pod
-/usr/lib/perl5/vendor_perl/5.26.1/IO/Socket/SSL/Intercept.pm
-/usr/lib/perl5/vendor_perl/5.26.1/IO/Socket/SSL/PublicSuffix.pm
-/usr/lib/perl5/vendor_perl/5.26.1/IO/Socket/SSL/Utils.pm
+/usr/lib/perl5/vendor_perl/5.28.0/IO/Socket/SSL.pm
+/usr/lib/perl5/vendor_perl/5.28.0/IO/Socket/SSL.pod
+/usr/lib/perl5/vendor_perl/5.28.0/IO/Socket/SSL/Intercept.pm
+/usr/lib/perl5/vendor_perl/5.28.0/IO/Socket/SSL/PublicSuffix.pm
+/usr/lib/perl5/vendor_perl/5.28.0/IO/Socket/SSL/Utils.pm
 
 %files dev
 %defattr(-,root,root,-)
