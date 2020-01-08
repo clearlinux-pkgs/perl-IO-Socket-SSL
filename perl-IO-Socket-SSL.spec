@@ -4,12 +4,13 @@
 #
 Name     : perl-IO-Socket-SSL
 Version  : 2.066
-Release  : 71
+Release  : 72
 URL      : https://cpan.metacpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.066.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.066.tar.gz
-Summary  : Nearly transparent SSL encapsulation for IO::Socket::INET
+Summary  : 'Nearly transparent SSL encapsulation for IO::Socket::INET.'
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
+Requires: perl-IO-Socket-SSL-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : perl(Mozilla::CA)
 BuildRequires : perl(Net::SSLeay)
@@ -29,14 +30,24 @@ Requires: perl-IO-Socket-SSL = %{version}-%{release}
 dev components for the perl-IO-Socket-SSL package.
 
 
+%package perl
+Summary: perl components for the perl-IO-Socket-SSL package.
+Group: Default
+Requires: perl-IO-Socket-SSL = %{version}-%{release}
+
+%description perl
+perl components for the perl-IO-Socket-SSL package.
+
+
 %prep
 %setup -q -n IO-Socket-SSL-2.066
+cd %{_builddir}/IO-Socket-SSL-2.066
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -59,11 +70,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/IO/Socket/SSL.pm
-/usr/lib/perl5/vendor_perl/5.28.2/IO/Socket/SSL.pod
-/usr/lib/perl5/vendor_perl/5.28.2/IO/Socket/SSL/Intercept.pm
-/usr/lib/perl5/vendor_perl/5.28.2/IO/Socket/SSL/PublicSuffix.pm
-/usr/lib/perl5/vendor_perl/5.28.2/IO/Socket/SSL/Utils.pm
 
 %files dev
 %defattr(-,root,root,-)
@@ -71,3 +77,11 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 /usr/share/man/man3/IO::Socket::SSL::Intercept.3
 /usr/share/man/man3/IO::Socket::SSL::PublicSuffix.3
 /usr/share/man/man3/IO::Socket::SSL::Utils.3
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/IO/Socket/SSL.pm
+/usr/lib/perl5/vendor_perl/5.30.1/IO/Socket/SSL.pod
+/usr/lib/perl5/vendor_perl/5.30.1/IO/Socket/SSL/Intercept.pm
+/usr/lib/perl5/vendor_perl/5.30.1/IO/Socket/SSL/PublicSuffix.pm
+/usr/lib/perl5/vendor_perl/5.30.1/IO/Socket/SSL/Utils.pm
