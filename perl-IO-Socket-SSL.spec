@@ -4,7 +4,7 @@
 #
 Name     : perl-IO-Socket-SSL
 Version  : 2.068
-Release  : 75
+Release  : 76
 URL      : https://cpan.metacpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.068.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.068.tar.gz
 Summary  : 'Nearly transparent SSL encapsulation for IO::Socket::INET.'
@@ -80,8 +80,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.2/IO/Socket/SSL.pm
-/usr/lib/perl5/vendor_perl/5.30.2/IO/Socket/SSL.pod
-/usr/lib/perl5/vendor_perl/5.30.2/IO/Socket/SSL/Intercept.pm
-/usr/lib/perl5/vendor_perl/5.30.2/IO/Socket/SSL/PublicSuffix.pm
-/usr/lib/perl5/vendor_perl/5.30.2/IO/Socket/SSL/Utils.pm
+/usr/lib/perl5/vendor_perl/5.30.3/IO/Socket/SSL.pm
+/usr/lib/perl5/vendor_perl/5.30.3/IO/Socket/SSL.pod
+/usr/lib/perl5/vendor_perl/5.30.3/IO/Socket/SSL/Intercept.pm
+/usr/lib/perl5/vendor_perl/5.30.3/IO/Socket/SSL/PublicSuffix.pm
+/usr/lib/perl5/vendor_perl/5.30.3/IO/Socket/SSL/Utils.pm
