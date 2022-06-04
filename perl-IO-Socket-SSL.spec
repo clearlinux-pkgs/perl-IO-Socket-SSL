@@ -4,7 +4,7 @@
 #
 Name     : perl-IO-Socket-SSL
 Version  : 2.074
-Release  : 90
+Release  : 91
 URL      : https://cpan.metacpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.074.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.074.tar.gz
 Summary  : 'Nearly transparent SSL encapsulation for IO::Socket::INET.'
@@ -80,8 +80,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.34.0/IO/Socket/SSL.pm
-/usr/lib/perl5/vendor_perl/5.34.0/IO/Socket/SSL.pod
-/usr/lib/perl5/vendor_perl/5.34.0/IO/Socket/SSL/Intercept.pm
-/usr/lib/perl5/vendor_perl/5.34.0/IO/Socket/SSL/PublicSuffix.pm
-/usr/lib/perl5/vendor_perl/5.34.0/IO/Socket/SSL/Utils.pm
+/usr/lib/perl5/*
