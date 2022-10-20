@@ -4,13 +4,14 @@
 #
 Name     : perl-IO-Socket-SSL
 Version  : 2.075
-Release  : 92
+Release  : 93
 URL      : https://cpan.metacpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.075.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.075.tar.gz
 Summary  : 'Nearly transparent SSL encapsulation for IO::Socket::INET.'
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
 Requires: perl-IO-Socket-SSL-perl = %{version}-%{release}
+Requires: perl(Net::SSLeay)
 BuildRequires : buildreq-cpan
 BuildRequires : perl(Mozilla::CA)
 BuildRequires : perl(Net::SSLeay)
