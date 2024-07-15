@@ -6,10 +6,10 @@
 # autospec commit: b858a2a
 #
 Name     : perl-IO-Socket-SSL
-Version  : 2.087
-Release  : 108
-URL      : https://cpan.metacpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.087.tar.gz
-Source0  : https://cpan.metacpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.087.tar.gz
+Version  : 2.088
+Release  : 109
+URL      : https://cpan.metacpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.088.tar.gz
+Source0  : https://cpan.metacpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.088.tar.gz
 Summary  : 'Nearly transparent SSL encapsulation for IO::Socket::INET.'
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
@@ -47,10 +47,10 @@ perl components for the perl-IO-Socket-SSL package.
 
 
 %prep
-%setup -q -n IO-Socket-SSL-2.087
-cd %{_builddir}/IO-Socket-SSL-2.087
+%setup -q -n IO-Socket-SSL-2.088
+cd %{_builddir}/IO-Socket-SSL-2.088
 pushd ..
-cp -a IO-Socket-SSL-2.087 buildavx2
+cp -a IO-Socket-SSL-2.088 buildavx2
 popd
 
 %build
